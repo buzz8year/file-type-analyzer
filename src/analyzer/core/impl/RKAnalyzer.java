@@ -1,14 +1,17 @@
-package analyzer.core;
+package analyzer.core.impl;
 
 import analyzer.Result;
+import analyzer.core.Analyzer;
 
-public class RKAnalyzer implements Analyzer {
+public class RKAnalyzer implements Analyzer
+{
     @Override
     public <T extends Result> boolean analyze(T result) {
         return getResult(result.getBytes(), result.getPattern());
     }
 
-    public boolean getResult(byte[] bytes, String pattern) {
+    public boolean getResult(byte[] bytes, String pattern)
+    {
         long m = 173_961_102_589_771L;
         int a = 117;
 
@@ -19,7 +22,8 @@ public class RKAnalyzer implements Analyzer {
         long hash = 0;
         long pow = 1;
 
-        for (int i = 0; i < pattern.length(); i++) {
+        for (int i = 0; i < pattern.length(); i++)
+        {
             patternHash += (long) pattern.charAt(i) * pow;
             patternHash %= m;
 
@@ -29,15 +33,21 @@ public class RKAnalyzer implements Analyzer {
             if (i != pattern.length() - 1)
                 pow = pow * a % m;
         }
-        for (int i = bytes.length; i >= pattern.length(); i--) {
-            if (patternHash == hash) {
-                for (int j = 0; j < pattern.length(); j++) {
+
+        for (int i = bytes.length; i >= pattern.length(); i--)
+        {
+            if (patternHash == hash)
+            {
+                for (int j = 0; j < pattern.length(); j++)
+                {
                     if ((char) bytes[i - pattern.length() + j] != pattern.charAt(j))
                         break;
                 }
                 return true;
             }
-            if (i > pattern.length()) {
+
+            if (i > pattern.length())
+            {
                 hash = (hash - bytes[i - 1] * pow % m + m) * a % m;
                 hash = (hash + bytes[i - pattern.length() - 1]) % m;
             }

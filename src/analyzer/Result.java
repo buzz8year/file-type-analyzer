@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class Result {
+public class Result
+{
     private String path, expected, pattern;
     private byte[] bytes;
     private File file;
@@ -13,7 +14,8 @@ public class Result {
 
     public boolean isMatch;
 
-    Result(String path, String[] pattern) throws IOException {
+    Result(String path, String[] pattern) throws IOException
+    {
         setRank(Integer.parseInt(pattern[0]));
         setExpected(pattern[2]);
         setPattern(pattern[1]);
