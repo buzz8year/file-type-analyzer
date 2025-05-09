@@ -10,13 +10,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.io.File;
 
-public class Commander
+public class Runner
 {
     HashMap<String, Result> resultMap = new HashMap<>();
     File[] files;
     Pool pool;
 
-    Commander(String[] args) throws FileNotFoundException
+    Runner(String[] args) throws FileNotFoundException
     {
         files = (new File(args[0])).listFiles(File::isFile);
         if (files != null)

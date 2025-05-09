@@ -2,7 +2,6 @@ package analyzer.core.impl;
 
 import analyzer.core.Analyzer;
 import analyzer.Result;
-import analyzer.core.Analyzer;
 
 public class NaiveAnalyzer implements Analyzer
 {

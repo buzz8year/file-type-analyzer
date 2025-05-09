@@ -7,9 +7,9 @@ public class Main
 {
     public static void main(String[] args) throws InterruptedException, FileNotFoundException, ExecutionException
     {
-        Commander commander = new Commander(args);
-        commander.launchPool();
+        Runner runner = new Runner(args);
+        runner.launchPool();
 
-        System.out.println(commander.getPrintable());
+        System.out.println(runner.getPrintable());
     }
 }
